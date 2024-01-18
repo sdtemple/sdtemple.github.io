@@ -340,3 +340,54 @@ legend("topright",
        lwd=c(2),
        title="p-value cutoff"
 )
+
+# Computing Z test statistic ----------------------------------------------
+
+mu = 140
+sig = 2.5
+x = rnorm(5000, mean=mu, sd=2.5)
+
+# plotting
+hist(x,
+     breaks=50,
+     xlab='Sodium (mEq per liter)',
+     main=NA,
+     probability=T,
+     xlim=c(130,150)
+)
+curve(dnorm(x,mu,sig),
+      from=130,
+      to=150,
+      add=T,
+      lwd=3
+)
+
+# plotting
+hist(x-140,
+     breaks=50,
+     xlab='Sodium (mEq per liter)',
+     main=NA,
+     probability=T,
+     xlim=c(-10,10)
+)
+curve(dnorm(x,0,sig),
+      from=-10,
+      to=10,
+      add=T,
+      lwd=3
+)
+
+# plotting
+hist((x-140)/2.5,
+     breaks=50,
+     xlab='Sodium (mEq per liter)',
+     main=NA,
+     probability=T,
+     xlim=c(-3,3)
+)
+curve(dnorm(x,0,1),
+      from=-3,
+      to=3,
+      add=T,
+      lwd=3
+)
